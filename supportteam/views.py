@@ -4,7 +4,6 @@ from django.contrib.auth.models import User
 from django.contrib.auth.password_validation import validate_password
 from django.core.exceptions import ValidationError
 from django.conf import settings
-from django import template
 
 
 import requests
@@ -95,10 +94,3 @@ def assign_requests(request):
 
 def handle_sms(request):
     return render(request, "handle-sms.html")
-
-
-register = template.Library()
-
-@register.filter(name='getkey')
-def getkey(value, arg):
-    return value[arg]  
