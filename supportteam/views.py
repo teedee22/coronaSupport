@@ -4,6 +4,8 @@ from django.contrib.auth.models import User
 from django.contrib.auth.password_validation import validate_password
 from django.core.exceptions import ValidationError
 from django.conf import settings
+from django import template
+
 
 import requests
 
@@ -36,7 +38,7 @@ def logout_user(request):
     return redirect(index)
 
 
-def register(request):
+def register_page(request):
     return render(request, "register.html")
 
 
@@ -71,13 +73,17 @@ def scan_volunteer(request):
     resp = requests.get(api_string, headers={'Authorization': 'Bearer ' + settings.AIRTABLE_API_KEY})
     volunteers_full_json = resp.json()['records']
 
-    volunteer_names = []
+    # volunteer_names = []
 
-    for record in volunteers_full_json:
-        volunteer_names.append(record.get('fields').get('Name'))
+    # for record in volunteers_full_json:
+    #     volunteer_names.append(record.get('fields').get('Name'))
+
+    # context = {
+    #     "names" : volunteer_names
+    # }
 
     context = {
-        "names" : volunteer_names
+        "volunteers" : volunteers_full_json
     }
     return render(request, "scan-volunteer.html", context)
 
@@ -88,4 +94,11 @@ def assign_requests(request):
     return render(request, "assign-requests.html")
 
 def handle_sms(request):
-    return render(request, "handle-sms.html")        
+    return render(request, "handle-sms.html")
+
+
+register = template.Library()
+
+@register.filter(name='getkey')
+def getkey(value, arg):
+    return value[arg]  
