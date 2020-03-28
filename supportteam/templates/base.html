@@ -13,9 +13,15 @@
         <div class="row justify-content-center">
             <div class="col-md-6 col-md-offset-3">
                 <div class="row text-center">
-                <div class="col-5"><a href="/">Login</a></div>
-                <div class="col-2">|</div>
-                <div class="col-5"><a href="/register">Register</a></div>
+                    {% if user.is_authenticated %}
+                        <div class="col-5"><a href="{% url 'logout_user' %}">Logout</a></div>
+                        <div class="col-2">|</div>
+                        <div class="col-5"><a href="#">Profile</a></div>
+                    {% else %}
+                        <div class="col-5"><a href="{% url 'home' %}">Login</a></div>
+                        <div class="col-2">|</div>
+                        <div class="col-5"><a href="{% url 'register' %}">Register</a></div>
+                    {% endif %}
                 </div>
                 <div class="jumbotron text-center">
                     <h1>Coronavirus-Support administrators</h1>
