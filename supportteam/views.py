@@ -3,8 +3,14 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.contrib.auth.password_validation import validate_password
 from django.core.exceptions import ValidationError
+from django.conf import settings
+
+import requests
+
 
 # Create your views here.
+
+sample_names = ['Skyler', 'Abi', 'Matt', 'Tim', 'Toby']
 
 
 def index(request):
@@ -58,7 +64,22 @@ def register_new_user(request):
     return redirect(index)
 
 def scan_volunteer(request):
-    return render(request, "scan-volunteer.html")
+    max_records = 25
+
+    # Call to Air Table
+    api_string = 'https://api.airtable.com/v0/apphZUrJD3wD17sah/Volunteers?maxRecords=' + str(max_records) +'&view=Volunteers%20master'
+    resp = requests.get(api_string, headers={'Authorization': 'Bearer ' + settings.AIRTABLE_API_KEY})
+    volunteers_full_json = resp.json()['records']
+
+    volunteer_names = []
+
+    for record in volunteers_full_json:
+        volunteer_names.append(record.get('fields').get('Name'))
+
+    context = {
+        "names" : volunteer_names
+    }
+    return render(request, "scan-volunteer.html", context)
 
 def scan_requests(request):
     return render(request, "scan-requests.html")

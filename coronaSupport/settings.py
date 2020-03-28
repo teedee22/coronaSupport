@@ -134,3 +134,5 @@ AUTH_PASSWORD_VALIDATORS = [
 
 STATIC_URL = "/static/"
 STATIC_ROOT = os.path.join(BASE_DIR, "static/")
+
+AIRTABLE_API_KEY = os.environ.get('AIRTABLE_API_KEY')
