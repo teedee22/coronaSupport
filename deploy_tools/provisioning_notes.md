@@ -12,11 +12,11 @@ eg, on Ubuntu:
 * replace DOMAIN with, e.g., staging.my-domain.com
 
 cat ./deploy_tools/nginx.template.conf \
-    | sed "s/DOMAIN/tombola.diveondown.com/g" \
-    | sudo tee /etc/nginx/sites-available/tombola.diveondown.com
+    | sed "s/DOMAIN/corona.challengechimp.com/g" \
+    | sudo tee /etc/nginx/sites-available/corona.challengechimp.com
 
-    sudo ln -s /etc/nginx/sites-available/tombola.diveondown.com \
-    /etc/nginx/sites-enabled/tombola.diveondown.com
+    sudo ln -s /etc/nginx/sites-available/corona.challengechimp.com \
+    /etc/nginx/sites-enabled/corona.challengechimp.com
 
 ## Systemd service
 
@@ -24,17 +24,17 @@ cat ./deploy_tools/nginx.template.conf \
 * replace DOMAIN with, e.g., staging.my-domain.com
 
 cat ./deploy_tools/gunicorn-systemd.template.service \
-    | sed "s/DOMAIN/tombola.diveondown.com/g" \
-    | sudo tee /etc/systemd/system/tombola.diveondown.com.service
+    | sed "s/DOMAIN/corona.challengechimp.com/g" \
+    | sudo tee /etc/systemd/system/corona.challengechimp.com.service
 
 cat ./deploy_tools/gunicorn.systemd.template.socket \
-    | sed "s/DOMAIN/tombola.diveondown.com/g" \
-    | sudo tee /etc/systemd/system/tombola.diveondown.com.socket
+    | sed "s/DOMAIN/corona.challengechimp.com/g" \
+    | sudo tee /etc/systemd/system/corona.challengechimp.com.socket
 
 sudo systemctl daemon-reload
 sudo systemctl reload nginx
-sudo systemctl enable tombola.diveondown.com
-sudo systemctl start tombola.diveondown.com
+sudo systemctl enable corona.challengechimp.com
+sudo systemctl start corona.challengechimp.com
 sudo systemctl restart nginx
 
 ## Folder structure:
