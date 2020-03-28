@@ -17,3 +17,6 @@ Alternatively, using python 3.8 inside a virtual environment:
 `python manage.py runserver`
 
 navigate to localhost:8000
+
+## Airtable API Access
+In order to access Airtable you must add your API key to your environment variables as AIRTABLE_API_KEY.
