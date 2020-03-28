@@ -22,6 +22,10 @@ from supportteam.views import (
     logout_user,
     register,
     register_new_user,
+    scan_volunteer,
+    scan_requests,
+    assign_requests,
+    handle_sms,
 )
 
 urlpatterns = [
@@ -31,4 +35,8 @@ urlpatterns = [
     path("logout", logout_user, name="logout_user"),
     path("register", register, name="register"),
     path("register_new_user", register_new_user, name="register_user"),
+    path("scan_volunteer", scan_volunteer, name="scan_volunteer"),
+    path("scan_requests", scan_requests, name="scan_requests"),
+    path("assign_requests", assign_requests, name="assign_requests"),
+    path("handle_sms", handle_sms, name="handle_sms"),
 ]

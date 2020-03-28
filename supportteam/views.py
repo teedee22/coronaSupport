@@ -56,3 +56,15 @@ def register_new_user(request):
     user = authenticate(request, username=username, password=password)
     login(request, user)
     return redirect(index)
+
+def scan_volunteer(request):
+    return render(request, "scan-volunteer.html")
+
+def scan_requests(request):
+    return render(request, "scan-requests.html")
+
+def assign_requests(request):
+    return render(request, "assign-requests.html")
+
+def handle_sms(request):
+    return render(request, "handle-sms.html")        

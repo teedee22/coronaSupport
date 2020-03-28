@@ -1,13 +1,15 @@
 {% extends 'base.html' %}
 
 {% block main_block %}
+<div class="row justify-content-center">
 <h1> Please choose which function you would like to use </h1>
+</div>
 <br><br>
-<h3><a href="#">Scan Volunteers</a></h3>
+<h3><a href="{% url 'scan_volunteer' %}">Scan Volunteers</a></h3>
 <br>
-<h3><a href="#">Scan Requests</a></h3>
+<h3><a href="{% url 'scan_requests' %}">Scan Requests</a></h3>
 <br>
-<h3><a href="#">Assign Requests</a></h3>
+<h3><a href="{% url 'assign_requests' %}">Assign Requests</a></h3>
 <br>
-<h3><a href="#">Handle SMS</a></h3>
+<h3><a href="{% url 'handle_sms' %}">Handle SMS</a></h3>
 {% endblock %}
