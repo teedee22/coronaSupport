@@ -81,13 +81,20 @@ def scan_volunteer(request):
     # context = {
     #     "names" : volunteer_names
     # }
+    volunteers = {}
+    try:
+        context = {
+            "volunteers" : airtable_api.getVolunteersTable(),
+            "status" : "Success",
+            "message" : "Message test"
+        }
+    except:
+        context = {
+            "volunteers" : airtable_api.getVolunteersTable(),
+            "status" : "Failed",
+            "message" : "Connection with Airtable failed. Check API key"
+        }
 
-    context = {
-        # "volunteers" : volunteers_full_json
-        "volunteers" : airtable_api.getVolunteersTable()
-    }
-
-    print (context['volunteers'])
     return render(request, "scan-volunteer.html", context)
 
 def scan_requests(request):
