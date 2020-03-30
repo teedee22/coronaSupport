@@ -9,14 +9,14 @@
 	<div>
 		<tr>
 			<th>Full Name</th>
-			<th>Email Address</th>
-			<th>Mobile Number</th>
+			<th>Neighbourhood</th>
+			<th>Status</th>
 		</tr>
 		{% for v in volunteers %}
 			<tr>
 				<th>{{v.fields|getkey:'Name'}}</th>
-				<th>{{v.fields|getkey:'Email address'}}</th>
-				<th>{{v.fields|getkey:'Mobile number'}}</th>
+				<th>{{v.fields|getkey:'Neighbourhood'}}</th>
+				<th>{{v.fields|getkey:'Status'}}</th>
 			</tr>
 		{% endfor %}
 		
