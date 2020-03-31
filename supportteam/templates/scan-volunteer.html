@@ -8,23 +8,63 @@
 
 {% block main_block %}
 <div class="row justify-content-center">
-<h1> Scan Volunteers </h1>
-</div>
-<table>
-	<div>
-		<tr>
-			<th>Full Name</th>
-			<th>Neighbourhood</th>
-			<th>Status</th>
-		</tr>
-		{% for v in volunteers %}
+<div style="overflow-x:auto;">
+	<h1> Scan Volunteers </h1>
+	</div>
+	<table>
+		<div>
 			<tr>
-				<th>{{v.fields|getkey:'Name'}}</th>
-				<th>{{v.fields|getkey:'Neighbourhood'}}</th>
-				<th>{{v.fields|getkey:'Status'}}</th>
+				<th>Full Name</th>
+				<th>Neighbourhood</th>
+				<th>Status</th>
+
+				<!--<th>Full Name</th>
+				<th>Email address</th>
+				<th>Mobile number</th>
+				<th>Notes</th>
+				<th>Other Phone</th>
+				<th>Assigned reuqests</th>
+				<th>Mobile number check</th>
+				<th>DBS certifcate number</th>
+				<th>Date of birth</th>
+				<th>Photo/scan of DBS certificate</th>
+				<th>Referee</th>
+				<th>Referee relationship</th>
+				<th>Referee phone number</th>
+				<th>Referee email address</th>
+				<th>Want DBS</th>
+				<th>At risk</th>
+				<th>Volunteer guidelines</th>
+				<th>Data consent</th>
+				<th>Share contact details</th>
+				<th>Extra information</th>
+				<th>Help offered</th>
+				<th>Neighbourhood</th>
+				<th>Car</th>
+				<th>DBS checked</th>
+				<th>References checked</th>
+				<th>Status</th>
+				<th>Date submitted</th>
+				<th>Date last modified</th>
+				<th>Approval SMS sent</th>
+				<th>Approval SMS message</th>
+				<th>Mobile with dialing code</th>
+				<th>DBS available</th>
+				<th>Mob (no spaces)</th>
+				<th>DBS share code</th>
+				<th>Reference requested</th>
+				<th>SMS initiated</th>
+				<th>SMS all</th>
+				<th>Person has new?</th>-->
 			</tr>
-		{% endfor %}
-		
+			{% for v in volunteers %}
+				<tr>
+					<th>{{v.fields|getkey:'Name'}}</th>
+					<th>{{v.fields|getkey:'Neighbourhood'}}</th>
+					<th>{{v.fields|getkey:'Status'}}</th>
+				</tr>
+			{% endfor %}
+		</div>	
 	</div>
 </table>
 {% endblock %}
