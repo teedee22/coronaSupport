@@ -85,17 +85,15 @@ def scan_volunteer(request):
     try:
         context = {
             "volunteers" : airtable_api.getVolunteersTable(),
-            "status" : "Success",
-            "message" : "Message test"
+            "status" : "Success"
         }
     except:
         context = {
-            "volunteers" : airtable_api.getVolunteersTable(),
             "status" : "Failed",
             "message" : "Connection with Airtable failed. Check API key"
         }
-
-    return render(request, "scan-volunteer.html", context)
+    finally:
+        return render(request, "scan-volunteer.html", context)
 
 def scan_requests(request):
     return render(request, "scan-requests.html")
