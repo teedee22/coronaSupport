@@ -7,12 +7,15 @@
 
 
 {% block main_block %}
-<div class="row justify-content-center">
-<div style="overflow-x:auto;">
+
+<div class="row justify-content-center text-center">
 	<h1> Scan Volunteers </h1>
-	</div>
-	<table>
-		<div>
+</div>
+<BR>
+<BR>
+<div class="row justify-content-center text-center">
+	<table id='volunteers-table'>
+		<thead>
 			<tr>
 				<th>Full Name</th>
 				<th>Neighbourhood</th>
@@ -57,14 +60,20 @@
 				<th>SMS all</th>
 				<th>Person has new?</th>-->
 			</tr>
+		</thead>
+		<tbody>
 			{% for v in volunteers %}
 				<tr>
-					<th>{{v.fields|getkey:'Name'}}</th>
-					<th>{{v.fields|getkey:'Neighbourhood'}}</th>
-					<th>{{v.fields|getkey:'Status'}}</th>
+					<td>{{v.fields|getkey:'Name'}}</td>
+					<td>{{v.fields|getkey:'Neighbourhood'}}</td>
+					<td>{{v.fields|getkey:'Status'}}</td>
 				</tr>
 			{% endfor %}
-		</div>	
-	</div>
-</table>
+		</tbody>
+	</table>
+	
+</div>
+<script>var table = new Tabulator("#volunteers-table", {});</script>
+
 {% endblock %}
+
